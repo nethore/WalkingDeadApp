@@ -1,0 +1,20 @@
+{
+  "name": "walkingdead",
+  "description": "Exo Angular WalkingDead",
+  "main": "gulpfile.js",
+  "authors": [
+    "nethore <nikolas.ethore@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.1"
+  }
+}
