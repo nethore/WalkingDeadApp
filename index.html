@@ -19,6 +19,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js" charset="utf-8"></script>
     <script src="bower_components/materialize/dist/js/materialize.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/locale/fr.js" charset="utf-8"></script>
@@ -32,25 +33,23 @@
           <a href="#" class="brand-logo center">Walking Dead</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li>
-              <a data-activates="slide-out" data-sidenav="left" data-menuwidth="450" data-closeonclick="false">Ajouter un personnage</a>
+              <a data-activates="slide-out" data-sidenav="left" data-menuwidth="400" data-closeonclick="false">Ajouter un personnage</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
     <div ng-controller="sideNav">
+      <form name="addPerso" novalidate ng-submit="ajouterPerso()">
       <ul id="slide-out" class="side-nav">
-       <li>
-         <div class="userView">
-         <div class="background">
-           <img src="http://www.aucoeurdelhorreur.com/wp-content/uploads/2016/06/the-walking-dead-saison-6-Capture1.jpg">
-         </div>
-       </div></li>
+
        <div class="formulaire">
-         <h4>Ajouter un personnage</h4>
          <div input-field>
-            <input type="text" ng-model="pseudo" length="30">
+            <input type="text" name="pseudo" ng-model="pseudo" required ng-minlength="2" ng-maxlength="30" length="30">
             <label>Prénom et nom</label>
+            <span class="text-danger" ng-show="addPerso.pseudo.$error.required">
+              Doit contenir au minimum 6 caractères
+            </span>
         </div>
         <div class="switch">
           Sexe :
@@ -89,40 +88,57 @@
                 clear="clear"
                 close="close"
                 select-years="15"/>
-         <label>Url de la photo</label>
+         <label>Date de naissance</label>
       </div>
+      <div input-field>
+         <input type="text" ng-model="pays">
+         <label>Pays</label>
+     </div>
+     <div input-field class="row">
+       <div class="col m6">
+         <input type="text" ng-model="lat">
+         <label>Latitude et Longitude</label>
+       </div>
+       <div class="col m6">
+         <input type="text" ng-model="long">
+       </div>
+    </div>
+    <div input-field>
+        <textarea ng-model="bio" class="materialize-textarea"></textarea>
+        <label>Biographie</label>
+    </div>
+    <div input-field>
+      <div>
+        Saisons
+      </div>
+      <div class="row">
+        <input type="checkbox" ng-model="saisons.s1" id="s1"/>
+        <label for="s1">1</label>
+        <input type="checkbox" ng-model="saisons.s2" id="s2"/>
+        <label for="s2">2</label>
+        <input type="checkbox" ng-model="saisons.s3" id="s3"/>
+        <label for="s3">3</label>
+        <input type="checkbox" ng-model="saisons.s4" id="s4"/>
+        <label for="s4">4</label>
+        <input type="checkbox" ng-model="saisons.s5" id="s5"/>
+        <label for="s5">5</label>
+        <input type="checkbox" ng-model="saisons.s6" id="s6"/>
+        <label for="s6">6</label>
+        <input type="checkbox" ng-model="saisons.s7" id="s7"/>
+        <label for="s7">7</label>
+      </div>
+    </div>
+       </div>
+       <div>
+         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
        </div>
      </ul>
+   </form>
    </div>
     <div class="container">
-      <section ng-controller="PersosWD" class="col m12">
-        <div class="row">
-          <div class="col m12" ng-repeat="user in users track by user.id">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img ng-src="{{ user.photo }}" ng-alt="{{ user.pseudo }}">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <h4>
-                    {{ user.pseudo }}
-                    <i ng-if="user.sexe" class="fa fa-mars" aria-hidden="true"></i>
-                    <i ng-if="!user.sexe" class="fa fa-venus" aria-hidden="true"></i>
-                  </h4>
-                  <p>Activité : <strong>{{ user.activite }}</strong></p>
-                  <p>Date de naissance : <strong>{{ user.naissance }} ({{ age(user.naissance) }} ans)</strong></p>
-                  <p>Pays : <strong>{{ user.pays }}</strong></p>
-                  <p>Saisons : <strong><span ng-repeat="saison in user.saison">{{ saison }} </span></strong></p>
-                </div>
-                <div class="card-action">
-                  <a ng-click=""><i class="fa fa-book" aria-hidden="true"></i> Voir la biographie</a>
-                  <a ng-click="supprUser(users.indexOf(user))"><i class="fa fa-heartbeat" aria-hidden="true"></i> Tuer le personnage</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div ng-view></div>
     </div>
   </body>
 </html>

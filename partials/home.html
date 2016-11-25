@@ -1,0 +1,28 @@
+<section class="col m12">
+  <div class="row">
+    <div class="col m12" ng-repeat="user in users track by user.id">
+      <div class="card horizontal">
+        <div class="card-image">
+          <img ng-src="{{ user.photo }}" ng-alt="{{ user.pseudo }}">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4>
+              {{ user.pseudo }}
+              <i ng-if="user.sexe" class="fa fa-mars" aria-hidden="true"></i>
+              <i ng-if="!user.sexe" class="fa fa-venus" aria-hidden="true"></i>
+            </h4>
+            <p>Activité : <strong>{{ user.activite }}</strong></p>
+            <p>Date de naissance : <strong>{{ user.naissance }} ({{ age(user.naissance) }} ans)</strong></p>
+            <p>Pays : <strong>{{ user.pays }}</strong></p>
+            <p>Saisons : <strong><span ng-repeat="saison in user.saison">{{ saison }} </span></strong></p>
+          </div>
+          <div class="card-action">
+            <a ng-click=""><i class="fa fa-book" aria-hidden="true"></i> Voir la biographie</a>
+            <a ng-click="supprUser(users.indexOf(user))"><i class="fa fa-heartbeat" aria-hidden="true"></i> Tuer le personnage</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

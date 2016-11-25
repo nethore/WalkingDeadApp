@@ -4,12 +4,6 @@ body {
   background: $bg-color;
 }
 
-.userView {
-  height: 190px;
-  img {
-    width: 450px;
-  }
-}
 .formulaire {
   padding: 15px;
   h4 {
@@ -19,9 +13,18 @@ body {
   .switch label {
     margin-left: 20px;
   }
+  .error-form {
+    color: $error-color;
+    font-size: 0.8rem;
+  }
 }
 .formulaire > div {
   margin: 20px 0;
+}
+
+[type="checkbox"]+label {
+    padding-left: 22px !important;
+    margin-right: 15px;
 }
 
 .fa-venus {
