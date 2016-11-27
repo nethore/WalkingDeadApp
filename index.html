@@ -30,113 +30,15 @@
     <header>
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">Walking Dead</a>
+          <a href="#/" class="brand-logo center">Walking Dead</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li>
-              <a data-activates="slide-out" data-sidenav="left" data-menuwidth="400" data-closeonclick="false">Ajouter un personnage</a>
+              <a href="#/ajout/">Ajouter un personnage</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
-    <div ng-controller="sideNav">
-      <form name="addPerso" novalidate ng-submit="ajouterPerso()">
-      <ul id="slide-out" class="side-nav">
-
-       <div class="formulaire">
-         <div input-field>
-            <input type="text" name="pseudo" ng-model="pseudo" required ng-minlength="2" ng-maxlength="30" length="30">
-            <label>Prénom et nom</label>
-            <span class="text-danger" ng-show="addPerso.pseudo.$error.required">
-              Doit contenir au minimum 6 caractères
-            </span>
-        </div>
-        <div class="switch">
-          Sexe :
-          <label>
-            Femme
-            <input type="checkbox" ng-model="sexe">
-            <span class="lever"></span>
-            Homme
-          </label>
-        </div>
-        <div input-field>
-           <input type="text" ng-model="activite">
-           <label>Activité</label>
-       </div>
-       <div input-field>
-          <input type="text" ng-model="photo">
-          <label>Url de la photo</label>
-      </div>
-      <div input-field>
-         <input input-date
-                type="text"
-                name="created"
-                id="inputCreated"
-                ng-model="naissance"
-                container=""
-                format="dd/mm/yyyy"
-                months-full="{{ month }}"
-                months-short="{{ monthShort }}"
-                weekdays-full="{{ weekdaysFull }}"
-                weekdays-short="{{ weekdaysShort }}"
-                weekdays-letter="{{ weekdaysLetter }}"
-                disable="disable"
-                min="{{ minDate }}"
-                today="today"
-                first-day="1"
-                clear="clear"
-                close="close"
-                select-years="15"/>
-         <label>Date de naissance</label>
-      </div>
-      <div input-field>
-         <input type="text" ng-model="pays">
-         <label>Pays</label>
-     </div>
-     <div input-field class="row">
-       <div class="col m6">
-         <input type="text" ng-model="lat">
-         <label>Latitude et Longitude</label>
-       </div>
-       <div class="col m6">
-         <input type="text" ng-model="long">
-       </div>
-    </div>
-    <div input-field>
-        <textarea ng-model="bio" class="materialize-textarea"></textarea>
-        <label>Biographie</label>
-    </div>
-    <div input-field>
-      <div>
-        Saisons
-      </div>
-      <div class="row">
-        <input type="checkbox" ng-model="saisons.s1" id="s1"/>
-        <label for="s1">1</label>
-        <input type="checkbox" ng-model="saisons.s2" id="s2"/>
-        <label for="s2">2</label>
-        <input type="checkbox" ng-model="saisons.s3" id="s3"/>
-        <label for="s3">3</label>
-        <input type="checkbox" ng-model="saisons.s4" id="s4"/>
-        <label for="s4">4</label>
-        <input type="checkbox" ng-model="saisons.s5" id="s5"/>
-        <label for="s5">5</label>
-        <input type="checkbox" ng-model="saisons.s6" id="s6"/>
-        <label for="s6">6</label>
-        <input type="checkbox" ng-model="saisons.s7" id="s7"/>
-        <label for="s7">7</label>
-      </div>
-    </div>
-       </div>
-       <div>
-         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-          </button>
-       </div>
-     </ul>
-   </form>
-   </div>
     <div class="container">
         <div ng-view></div>
     </div>

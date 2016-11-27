@@ -1,0 +1,120 @@
+<section class="col m12">
+    <form name="addPerso" novalidate ng-submit="ajout.ajouterPerso()">
+        <div class="formulaire">
+          <div class="row">
+            <div input-field class="col m8">
+                <input type="text" name="pseudo" ng-model="ajout.pseudo" required ng-minlength="2" ng-maxlength="30" length="30">
+                <label>Prénom et nom</label>
+                <span class="text-danger" ng-show="addPerso.pseudo.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+            <div class="switch col m4">
+                Sexe :
+                <label>
+                    Femme
+                    <input type="checkbox" value="true" ng-model="ajout.sexe">
+                    <span class="lever"></span>
+                    Homme
+                </label>
+            </div>
+          </div>
+          <div class="row">
+            <div input-field class="col m6">
+                <input type="text" name="activite" ng-model="ajout.activite" required>
+                <label>Activité</label>
+                <span class="text-danger" ng-show="addPerso.activite.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+            <div input-field class="col m6">
+                <input
+                    input-date
+                    type="text"
+                    name="naissance"
+                    id="inputCreated"
+                    ng-model="ajout.naissance"
+                    container=""
+                    format="dd/mm/yyyy"
+                    months-full="{{ month }}"
+                    months-short="{{ monthShort }}"
+                    weekdays-full="{{ weekdaysFull }}"
+                    weekdays-short="{{ weekdaysShort }}"
+                    weekdays-letter="{{ weekdaysLetter }}"
+                    disable="disable"
+                    min="{{ minDate }}"
+                    today="today"
+                    first-day="1"
+                    clear="clear"
+                    close="close"
+                    select-years="15"
+                    required/>
+                <label>Date de naissance</label>
+                <span class="text-danger" ng-show="addPerso.naissance.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+          </div>
+          <div class="row">
+            <div input-field class="col m12">
+                <input type="text" name="url" ng-model="ajout.photo" required>
+                <label>Url de la photo</label>
+                <span class="text-danger" ng-show="addPerso.url.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+          </div>
+          <div class="row">
+            <div input-field class="col m6">
+                <input type="text" name="pays" ng-model="ajout.pays" required>
+                <label>Pays</label>
+                <span class="text-danger" ng-show="addPerso.pays.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+            <div input-field class="col m3">
+                <input type="text" name="lat" ng-model="ajout.lat" required>
+                <label>Latitude</label>
+                <span class="text-danger" ng-show="addPerso.lat.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+            <div input-field class="col m3">
+                <input type="text" name="long" ng-model="ajout.long" required>
+                <label>Longitude</label>
+                <span class="text-danger" ng-show="addPerso.long.$error.required">
+                    Champ obligatoire
+                </span>
+            </div>
+          </div>
+          <div class="row">
+            <div input-field class="col m12">
+                <textarea ng-model="ajout.bio" class="materialize-textarea"></textarea>
+                <label>Biographie</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m8">
+              <span class="saisons">Saisons : </span>
+              <input type="checkbox" ng-model="ajout.saisons.s1" id="s1"/>
+              <label for="s1">1</label>
+              <input type="checkbox" ng-model="ajout.saisons.s2" id="s2"/>
+              <label for="s2">2</label>
+              <input type="checkbox" ng-model="ajout.saisons.s3" id="s3"/>
+              <label for="s3">3</label>
+              <input type="checkbox" ng-model="ajout.saisons.s4" id="s4"/>
+              <label for="s4">4</label>
+              <input type="checkbox" ng-model="ajout.saisons.s5" id="s5"/>
+              <label for="s5">5</label>
+              <input type="checkbox" ng-model="ajout.saisons.s6" id="s6"/>
+              <label for="s6">6</label>
+              <input type="checkbox" ng-model="ajout.saisons.s7" id="s7"/>
+              <label for="s7">7</label>
+            </div>
+            <div class="col m4">
+              <button class="btn waves-effect waves-light" type="submit" name="action" ng-disabled="addPerso.$invalid">Ajouter le personnage</button>
+            </div>
+          </div>
+        </div>
+    </form>
+</section>

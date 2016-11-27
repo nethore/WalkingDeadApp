@@ -6,9 +6,13 @@ body {
 
 .formulaire {
   padding: 15px;
+  margin-top:20px;
   h4 {
     font-size: 1.3rem;
     margin: 0;
+  }
+  .switch {
+    margin-top:20px;
   }
   .switch label {
     margin-left: 20px;
@@ -17,10 +21,21 @@ body {
     color: $error-color;
     font-size: 0.8rem;
   }
+  .saisons {
+    display: inline-block;
+    margin-right: 25px;
+  }
+  .text-danger {
+    color: $error-grey;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    display:block;
+    margin-top: -15px;
+  }
 }
-.formulaire > div {
-  margin: 20px 0;
-}
+// .formulaire > div {
+//   margin: 20px 0;
+// }
 
 [type="checkbox"]+label {
     padding-left: 22px !important;

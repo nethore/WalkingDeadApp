@@ -34,6 +34,7 @@ var reload = browserSync.reload;
 gulp.task('browser-sync', function() {
     browserSync({
         port: 8066,
+        browser: "Chromium",
         server: {
             baseDir: "./", //base
             index: "index.html" //fichier a chargé
@@ -43,7 +44,7 @@ gulp.task('browser-sync', function() {
 
 // reload a server
 gulp.task('browser-reload', function() {
-    reload({ stream: true });
+    reload({ stream: true, reload: once });
 });
 
 // Clean log, comments, remove old files

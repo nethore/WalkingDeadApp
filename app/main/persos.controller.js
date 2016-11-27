@@ -11,14 +11,21 @@
      * Factory Resolving by Routing.
      * Cela signifie que la Factory est chargé avant que la page se charge
      */
-    function PersosWD($scope, $http, $log){
+    function PersosWD($scope, $http, $log, users, dataService){
 
        // On récupère le fichier JSON et on l'injecte dans $scope.users
-       $http.get("datas/persos.json").
-         success(function(data, status) {
-           $log.log('JSON Gen : ', data);
-         	$scope.users = data;
-         });
+       $scope.dataService = dataService;
+
+       $scope.users = users;
+
+       $scope.users.push($scope.dataService.user);
+
+        // $scope.users = $rootScope.newUser;
+        // $scope.$on('addUser', function(event, data){
+          // $scope.users.push(shareUser.get());
+        // });
+
+
 
          $scope.age = function(dateBirth) {
            return moment().diff(moment(dateBirth, 'DD-MM-YYYY'), 'years');
