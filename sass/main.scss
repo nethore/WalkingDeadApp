@@ -42,6 +42,15 @@ body {
     margin-right: 15px;
 }
 
+[type="radio"]+label {
+    padding-left: 30px !important;
+    margin-right: 15px;
+}
+
+.filters {
+  margin-top: 20px;
+}
+
 .fa-venus {
   color: $pink-female;
   font-size: 0.7em;

@@ -12,12 +12,12 @@
      * Cela signifie que la Factory est chargé avant que la page se charge
      */
 
-     ajoutCtrl.$inject = ['$scope', 'dataService'];
+     ajoutCtrl.$inject = ['$scope', 'UserFcty'];
 
-    function ajoutCtrl($scope, dataService){
+    function ajoutCtrl($scope, UserFcty){
 
       var vm = this;
-      vm.dataService = dataService;
+      vm.ajouterPerso = ajouterPerso;
 
       vm.saisons = {
         's1': false,
@@ -31,6 +31,8 @@
       vm.sexe = true;
 
       function ajouterPerso() {
+
+        console.log("Je rentre dans ma fonction !");
 
         vm.saisonsArr = [];
 
@@ -60,30 +62,28 @@
           "saison": vm.saisonsArr
         };
 
+        UserFcty.add(vm.userAdded).then(function() {
+          // On reinitialise le formulaire
+          vm.pseudo = "";
+          vm.sexe = true;
+          vm.activite = "";
+          vm.photo = "";
+          vm.naissance = "";
+          vm.pays = "";
+          vm.lat = "";
+          vm.long = "";
+          vm.bio = "";
+          vm.saisons = {
+            's1': false,
+            's2': false,
+            's3': false,
+            's4': false,
+            's5': false,
+            's6': false,
+            's7': false
+          };
+        });
 
-        vm.dataService.user = vm.userAdded;
-
-        console.log('dataservice ajoutctrl', vm.dataService.user);
-
-        // On reinitialise le formulaire
-        vm.pseudo = "";
-        vm.sexe = true;
-        vm.activite = "";
-        vm.photo = "";
-        vm.naissance = "";
-        vm.pays = "";
-        vm.lat = "";
-        vm.long = "";
-        vm.bio = "";
-        vm.saisons = {
-          's1': false,
-          's2': false,
-          's3': false,
-          's4': false,
-          's5': false,
-          's6': false,
-          's7': false
-        };
 
       }
 

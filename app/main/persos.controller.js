@@ -11,14 +11,11 @@
      * Factory Resolving by Routing.
      * Cela signifie que la Factory est chargé avant que la page se charge
      */
-    function PersosWD($scope, $http, $log, users, dataService){
+    function PersosWD($scope, $http, $log, users, UserFcty){
 
        // On récupère le fichier JSON et on l'injecte dans $scope.users
-       $scope.dataService = dataService;
 
        $scope.users = users;
-
-       $scope.users.push($scope.dataService.user);
 
         // $scope.users = $rootScope.newUser;
         // $scope.$on('addUser', function(event, data){
@@ -33,7 +30,9 @@
 
          $scope.supprUser = function(idUser) {
            Materialize.toast($scope.users[idUser].pseudo + " s'est fait défoncer sa gueule !", 4000);
-           $scope.users.splice(idUser, 1);
+           UserFcty.remove(idUser).then(function() {
+              $scope.users.splice(idUser, 1);
+            });
          };
 
      }
