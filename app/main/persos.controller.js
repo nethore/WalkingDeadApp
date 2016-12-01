@@ -15,6 +15,8 @@
 
        // On récupère le fichier JSON et on l'injecte dans $scope.users
 
+       $scope.ageMin = 15;
+
        $scope.users = users;
 
         // $scope.users = $rootScope.newUser;

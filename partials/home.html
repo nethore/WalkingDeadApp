@@ -1,16 +1,26 @@
 <section class="col m12">
   <div class="row filters">
-    <div class="col m5">
+    <div class="col m4">
+      <p>
       <input name="sexe" ng-model="sexeVal" type="radio" id="man" value="man"/>
       <label for="man">Hommes</label>
       <input name="sexe" ng-model="sexeVal" type="radio" id="woman" value="woman"/>
       <label for="woman">Femmes</label>
       <input name="sexe" ng-model="sexeVal" type="radio" id="all" value="all"/>
       <label for="all">Tous</label>
+    </p>
+    </div>
+    <div class="col m3 age">
+      <p>Age minimum ({{ ageMin }} ans):</p>
+    </div>
+    <div class="col m5">
+      <p class="range-field">
+        <input type="range" id="agemin" value="18" ng-model="ageMin" min="10" max="70" />
+      </p>
     </div>
   </div>
   <div class="row">
-    <div class="col m12" ng-repeat="user in users | whatSexe:sexeVal | filterAge:18 track by user.id">
+    <div class="col m12" ng-repeat="user in users | whatSexe:sexeVal | filterAge:ageMin track by user.id">
       <div class="card horizontal">
         <div class="card-image">
           <img ng-src="{{ user.photo }}" ng-alt="{{ user.pseudo }}">
